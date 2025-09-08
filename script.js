@@ -1,33 +1,30 @@
-// script.js
-
-// Espera o documento HTML ser completamente carregado antes de executar o script.
 document.addEventListener('DOMContentLoaded', function () {
-
-    // Seleciona o formulário pelo seu ID 'interest-form'.
     const form = document.getElementById('interest-form');
+    const statusMessage = document.getElementById('status-message');
 
-    // Adiciona um "ouvinte" para o evento de 'submit' (envio) do formulário.
     form.addEventListener('submit', function (event) {
-        
-        // 1. Previne o comportamento padrão do navegador, que é recarregar a página.
         event.preventDefault();
 
-        // 2. Coleta os valores dos campos do formulário.
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const comments = document.getElementById('comments').value;
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const comments = document.getElementById('comments').value.trim();
 
-        // Para os checkboxes, selecionamos todos os que estão marcados (:checked).
         const checkedInterests = document.querySelectorAll('input[name="interest"]:checked');
-        
-        // Criamos um array (lista) apenas com o texto de cada interesse marcado.
-        const interests = Array.from(checkedInterests).map(checkbox => checkbox.nextElementSibling.textContent);
+        const interests = Array.from(checkedInterests).map(cb => cb.nextElementSibling.textContent);
 
-        // 3. Exibe uma mensagem de confirmação para o usuário.
-        // O \n cria uma quebra de linha no alerta.
-        alert(`Obrigado por se inscrever, ${name}!\n\nRecebemos seu interesse em: ${interests.join(', ')}.\nEnviaremos as novidades para o e-mail: ${email}.`);
-        
-        // Também é uma boa prática mostrar os dados no console para depuração.
+        // Validação simples
+        if (!name || !email) {
+            statusMessage.textContent = "⚠️ Por favor, preencha todos os campos obrigatórios.";
+            statusMessage.className = "error";
+            statusMessage.style.display = "block";
+            return;
+        }
+
+        // Mensagem de sucesso
+        statusMessage.textContent = `✅ Obrigado por se inscrever, ${name}! Recebemos seu interesse em: ${interests.join(', ') || "Nenhum selecionado"}.`;
+        statusMessage.className = "success";
+        statusMessage.style.display = "block";
+
         console.log({
             nome: name,
             email: email,
@@ -35,8 +32,10 @@ document.addEventListener('DOMContentLoaded', function () {
             comentarios: comments
         });
 
-        // 4. Limpa todos os campos do formulário para um novo preenchimento.
-        form.reset();
+        // Limpa formulário após 2s
+        setTimeout(() => {
+            form.reset();
+            statusMessage.style.display = "none";
+        }, 4000);
     });
-
 });

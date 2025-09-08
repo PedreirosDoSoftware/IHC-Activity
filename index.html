@@ -1,62 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tecnologias Emergentes</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <div class="container">
         <header>
             <h1>Participe do nosso evento sobre IA</h1>
-            <p>Preencha o formulário para receber as novidades e garantir sua vaga!</p>
+            <p>Preencha o formulário para receber novidades e garantir sua vaga!</p>
         </header>
+
         <form id="interest-form">
             <div class="form-group">
                 <label for="name">Nome</label>
-                <input type="text" id="name" name="name" placeholder="Seu nome Completo" required
-                    aria-describedby="name-desc">
+                <input type="text" id="name" name="name" placeholder="Seu nome completo" required aria-describedby="name-desc">
                 <small id="name-desc" class="helper-text">Insira seu nome para identificação.</small>
             </div>
+
             <div class="form-group">
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required
-                    aria-describedby="email-desc">
-                <small id="email-desc" class="helper-text">Informe um e-mail válido para contato</small>
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required aria-describedby="email-desc">
+                <small id="email-desc" class="helper-text">Informe um e-mail válido para contato.</small>
             </div>
+
             <div class="form-group">
-                <label>Área de Interesse:</label>
+                <label>Áreas de Interesse</label>
                 <div class="checkbox-group">
-                    <div class="checkbox-group-item">
+                    <div class="checkbox-item">
                         <input type="checkbox" id="ml" name="interest" value="machine-learning">
                         <label for="ml">Machine Learning</label>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="nlp" name="interest" value="nlp">
-                            <label for="nlp">Processamento de Linguagem Natural</label>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="cv" name="interest" value="conputer-vision">
-                                <label for="cv">Visão Computacional</label>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="comments">Comentários (Opcional):</label>
-                                <textarea id="comments" name="comments" rows="4"
-                                    placeholder="Algum comentário ou dúvida?"></textarea>
-                            </div>
-                            <button type="submit">Enviar Inscrição</button>
-
-                            <script src="script.js"></script>
-                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="nlp" name="interest" value="nlp">
+                        <label for="nlp">Processamento de Linguagem Natural</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="cv" name="interest" value="computer-vision">
+                        <label for="cv">Visão Computacional</label>
                     </div>
                 </div>
-
             </div>
+
+            <div class="form-group">
+                <label for="comments">Comentários (opcional)</label>
+                <textarea id="comments" name="comments" rows="4" placeholder="Algum comentário ou dúvida?"></textarea>
+            </div>
+
+            <button type="submit">Enviar Inscrição</button>
+            <div id="status-message"></div>
         </form>
-
     </div>
-</body>
 
+    <script src="script.js"></script>
+</body>
 </html>
