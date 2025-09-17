@@ -1,236 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tecnologias Emergentes - Inscrição</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Interesse em Tecnologias Emergentes</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="main-container">
-    <!-- Cabeçalho -->
-    <header class="header">
-      <div class="header-icon">
-        <i class="fas fa-rocket" aria-hidden="true"></i>
-      </div>
-      <h1>Tecnologias Emergentes 2025</h1>
-      <p>Junte-se à revolução da inteligência artificial e tecnologias do futuro. Inscreva-se para receber atualizações exclusivas e garantir sua vaga em nossos eventos.</p>
-    </header>
+    <div class="container">
+        <header>
+            <h1>Pesquisa sobre Tecnologias Emergentes</h1>
+            <p>Participe da nossa pesquisa e compartilhe seu interesse em tecnologias do futuro</p>
+        </header>
 
-    <!-- Indicador de Progresso -->
-    <div class="progress-indicator">
-      <div class="progress-bar">
-        <div class="progress-fill" id="progressFill"></div>
-      </div>
-      <div class="progress-text">
-        <span id="progressText">Iniciando formulário...</span>
-      </div>
-    </div>
-
-    <!-- Formulário -->
-    <div class="form-container">
-      <form id="emergingTechForm" novalidate>
-        <!-- Seção: Informações Pessoais -->
-        <section class="form-section">
-          <h2 class="section-title">
-            <div class="section-icon">
-              <i class="fas fa-user" aria-hidden="true"></i>
-            </div>
-            Informações Pessoais
-          </h2>
-
-          <div class="form-row">
+        <form id="techForm">
             <div class="form-group">
-              <label for="firstName" class="form-label">
-                Primeiro Nome <span class="required-indicator" aria-label="obrigatório">*</span>
-              </label>
-              <input type="text" id="firstName" name="firstName" class="form-input"
-                     placeholder="Digite seu primeiro nome" required
-                     aria-describedby="firstName-help firstName-validation"
-                     autocomplete="given-name" />
-                        <div class="help-icon" >?</div>
-              <div id="firstName-help" class="help-text">
-             
-                Como você gostaria de ser chamado
-              </div>
-              <div id="firstName-validation" class="validation-message" aria-live="polite"></div>
+                <label for="name">Nome completo</label>
+                <input type="text" id="name" name="name" placeholder="Digite seu nome completo">
+                <span class="error-message" id="nameError"></span>
             </div>
 
             <div class="form-group">
-              <label for="lastName" class="form-label">
-                Sobrenome <span class="required-indicator" aria-label="obrigatório">*</span>
-              </label>
-              <input type="text" id="lastName" name="lastName" class="form-input"
-                     placeholder="Digite seu sobrenome" required
-                     aria-describedby="lastName-help lastName-validation"
-                     autocomplete="family-name" />
-              <div id="lastName-help" class="help-text">
-
-              </div>
-              <div id="lastName-validation" class="validation-message" aria-live="polite"></div>
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com">
+                <span class="error-message" id="emailError"></span>
             </div>
-          </div>
 
-          <div class="form-group">
-            <label for="email" class="form-label">
-              E-mail <span class="required-indicator" aria-label="obrigatório">*</span>
-            </label>
-            <input type="email" id="email" name="email" class="form-input"
-                   placeholder="seu.email@exemplo.com" required
-                   aria-describedby="email-help email-validation"
-                   autocomplete="email" />
-                  <div class="help-icon">?</div>
-                   <div id="email-help" class="help-text">
-              
-              Utilizaremos para enviar atualizações sobre eventos e novidades
+            <div class="form-group">
+                <label>Tecnologias de interesse (selecione pelo menos uma)</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="ai" name="tech" value="ai">
+                        <label for="ai">Inteligência Artificial</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="ar" name="tech" value="ar">
+                        <label for="ar">Realidade Aumentada</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="blockchain" name="tech" value="blockchain">
+                        <label for="blockchain">Blockchain</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="iot" name="tech" value="iot">
+                        <label for="iot">Internet das Coisas (IoT)</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="robotics" name="tech" value="robotics">
+                        <label for="robotics">Robótica</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="quantum" name="tech" value="quantum">
+                        <label for="quantum">Computação Quântica</label>
+                    </div>
+                </div>
+                <span class="error-message" id="techError"></span>
             </div>
-            <div id="email-validation" class="validation-message" aria-live="polite"></div>
-          </div>
 
-          <div class="form-group">
-            <label for="experience" class="form-label">Nível de Experiência</label>
-            <div class="custom-select">
-              <select id="experience" name="experience" class="form-input" aria-describedby="experience-help">
-                <option value="">Selecione seu nível</option>
-                <option value="beginner">Iniciante - Pouco ou nenhum conhecimento</option>
-                <option value="intermediate">Intermediário - Conhecimento básico</option>
-                <option value="advanced">Avançado - Conhecimento sólido</option>
-                <option value="expert">Especialista - Profundo conhecimento</option>
-              </select>
+            <div class="form-group">
+                <label for="comments">Comentários ou sugestões</label>
+                <textarea id="comments" name="comments" placeholder="Compartilhe seus pensamentos sobre essas tecnologias..." rows="4"></textarea>
             </div>
-            <div class="help-icon">?</div>
-            <div id="experience-help" class="help-text">
-              
-              Nos ajuda a personalizar o conteúdo para você
+
+            <div class="form-actions">
+                <button type="submit" id="submitBtn">Enviar formulário</button>
             </div>
-          </div>
-        </section>
+        </form>
 
-        <!-- Seção: Áreas de Interesse -->
-        <section class="form-section">
-          <h2 class="section-title">
-            <div class="section-icon">
-              <i class="fas fa-brain" aria-hidden="true"></i>
-            </div>
-            Áreas de Interesse em Tecnologias Emergentes
-          </h2>
-
-          <fieldset class="checkbox-grid">
-            <legend class="sr-only">Selecione suas áreas de interesse</legend>
-            
-            <label class="checkbox-item" for="ai-ml">
-              <input type="checkbox" id="ai-ml" name="interests" value="ai-ml" />
-              <div>
-                <div class="checkbox-label">Inteligência Artificial e Machine Learning</div>
-                <div class="checkbox-description">Algoritmos de aprendizado, redes neurais, deep learning</div>
-              </div>
-            </label>
-
-            <label class="checkbox-item" for="nlp">
-              <input type="checkbox" id="nlp" name="interests" value="nlp" />
-              <div>
-                <div class="checkbox-label">Processamento de Linguagem Natural</div>
-                <div class="checkbox-description">Chatbots, análise de sentimentos, tradução automática</div>
-              </div>
-            </label>
-
-            <label class="checkbox-item" for="computer-vision">
-              <input type="checkbox" id="computer-vision" name="interests" value="computer-vision" />
-              <div>
-                <div class="checkbox-label">Visão Computacional</div>
-                <div class="checkbox-description">Reconhecimento de imagens, detecção de objetos</div>
-              </div>
-            </label>
-
-            <label class="checkbox-item" for="blockchain">
-              <input type="checkbox" id="blockchain" name="interests" value="blockchain" />
-              <div>
-                <div class="checkbox-label">Blockchain e Web3</div>
-                <div class="checkbox-description">Criptomoedas, NFTs, contratos inteligentes</div>
-              </div>
-            </label>
-
-            <label class="checkbox-item" for="iot">
-              <input type="checkbox" id="iot" name="interests" value="iot" />
-              <div>
-                <div class="checkbox-label">Internet das Coisas (IoT)</div>
-                <div class="checkbox-description">Dispositivos conectados, automação residencial</div>
-              </div>
-            </label>
-
-            <label class="checkbox-item" for="quantum">
-              <input type="checkbox" id="quantum" name="interests" value="quantum" />
-              <div>
-                <div class="checkbox-label">Computação Quântica</div>
-                <div class="checkbox-description">Algoritmos quânticos, criptografia quântica</div>
-              </div>
-            </label>
-
-            <label class="checkbox-item" for="robotics">
-              <input type="checkbox" id="robotics" name="interests" value="robotics" />
-              <div>
-                <div class="checkbox-label">Robótica Avançada</div>
-                <div class="checkbox-description">Robôs autônomos, automação industrial</div>
-              </div>
-            </label>
-
-            <label class="checkbox-item" for="ar-vr">
-              <input type="checkbox" id="ar-vr" name="interests" value="ar-vr" />
-              <div>
-                <div class="checkbox-label">Realidade Aumentada e Virtual</div>
-                <div class="checkbox-description">Metaverso, experiências imersivas</div>
-              </div>
-            </label>
-          </fieldset>
-        </section>
-
-        <!-- Seção: Comentários -->
-        <section class="form-section">
-          <h2 class="section-title">
-            <div class="section-icon">
-              <i class="fas fa-comment" aria-hidden="true"></i>
-            </div>
-            Comentários e Expectativas
-          </h2>
-
-          <div class="form-group">
-            <label for="comments" class="form-label">
-              Conte-nos mais sobre seus interesses (opcional)
-            </label>
-            <textarea id="comments" name="comments" class="form-textarea"
-                      placeholder="Quais são suas principais expectativas? Há algum tópico específico que gostaria de ver abordado? Compartilhe suas experiências ou dúvidas..."
-                      maxlength="500"
-                      aria-describedby="comments-help comments-counter"></textarea>
-                       <div class="help-icon">?</div>
-            <div id="comments-help" class="help-text">
-             
-              Opcional: Ajude-nos a entender melhor suas necessidades e interesses
-            </div>
-            <div id="comments-counter" class="char-counter">
-              <span id="charCount">0</span>/500 caracteres
-            </div>
-          </div>
-        </section>
-
-        <!-- Botões -->
-        <div class="form-actions">
-          <button type="button" class="btn btn-secondary" id="clearBtn">
-            <i class="fas fa-eraser" aria-hidden="true"></i>
-            Limpar Formulário
-          </button>
-          <button type="submit" class="btn btn-primary" id="submitBtn">
-            <i class="fas fa-paper-plane" aria-hidden="true"></i>
-            Enviar Inscrição
-          </button>
+        <div id="successMessage" class="success-message hidden">
+            <h2>✅ Formulário enviado com sucesso!</h2>
+            <p>Obrigado por participar da nossa pesquisa. Seus dados foram recebidos.</p>
+            <button id="resetBtn">Preencher novo formulário</button>
         </div>
-
-        <!-- Status -->
-        <div id="statusMessage" class="status-message" role="alert" aria-live="assertive"></div>
-      </form>
     </div>
-  </main>
-  <script src="script.js"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>
