@@ -46,6 +46,11 @@ document.addEventListener('DOMContentLoaded', function() {
         // Tech card selection
         techCards.forEach(card => {
             card.addEventListener('click', toggleTechCard);
+            const checkbox = card.querySelector('input[type="checkbox"]');
+            checkbox.addEventListener('change', function() {
+                validateTech();
+                updateProgress();
+            });
         });
         
         // Form submission
@@ -178,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateTechCard(card, checkbox.checked);
         updateTechArray();
         updateProgress();
-        validateTech();
+        validateTech(); // Valida imediatamente após a seleção
     }
 
     function handleCardKeydown(event) {
@@ -286,7 +291,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function handleSubmit(event) {
         event.preventDefault();
         
-        // Validate all fields
+        // Validate all required fields
         const isNameValid = validateName();
         const isEmailValid = validateEmail();
         const isTechValid = validateTech();
@@ -301,6 +306,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Show success message
                 form.classList.add('hidden');
                 successMessage.classList.remove('hidden');
+                
+                // Add feedback survey link
+                const feedbackHtml = `
+                    <div class="feedback-section">
+                        <h3>Ajude-nos a melhorar!</h3>
+                        <p>Gostaríamos de saber sua opinião sobre este formulário.</p>
+                        <a href="https://forms.google.com/SEU_LINK_AQUI" target="_blank" class="btn btn-secondary">
+                            Participar da pesquisa de satisfação
+                        </a>
+                    </div>
+                `;
+                successMessage.innerHTML += feedbackHtml;
                 
                 // Announce success to screen readers
                 announceToScreenReader('Formulário enviado com sucesso!');
@@ -456,8 +473,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add progress announcements
     let lastProgress = 0;
     const progressUpdate = function() {
-        updateProgress();
-        
         const currentProgress = Math.round(parseFloat(progressFill.style.width));
         if (currentProgress > lastProgress && currentProgress % 25 === 0) {
             announceToScreenReader(`Progresso: ${currentProgress}% concluído`);

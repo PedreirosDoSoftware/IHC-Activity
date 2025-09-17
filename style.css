@@ -102,7 +102,7 @@ body {
 }
 
 .header h1 {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 700;
     margin-bottom: 12px;
     text-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -535,4 +535,20 @@ textarea:focus {
 
 .character-count.error {
     color: var(--error-color);
+}
+/* Feedback Section */
+.feedback-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px dashed rgba(255, 255, 255, 0.3);
+}
+
+.feedback-section h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.feedback-section p {
+    margin-bottom: 15px;
+    opacity: 0.9;
 }
