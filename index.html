@@ -3,74 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário de Interesse em Tecnologias Emergentes</title>
+    <title>Pesquisa: Tecnologias Emergentes 2025</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Progress Indicator -->
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-text" id="progressText">0% concluído</div>
+    </div>
+
     <div class="container">
-        <header>
-            <h1>Pesquisa sobre Tecnologias Emergentes</h1>
-            <p>Participe da nossa pesquisa e compartilhe seu interesse em tecnologias do futuro</p>
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🚀 Pesquisa: Tecnologias Emergentes 2025</h1>
+                <p>Compartilhe sua visão sobre as tecnologias que moldarão o futuro</p>
+            </div>
         </header>
 
-        <form id="techForm">
-            <div class="form-group">
-                <label for="name">Nome completo</label>
-                <input type="text" id="name" name="name" placeholder="Digite seu nome completo">
-                <span class="error-message" id="nameError"></span>
+        <!-- Form Container -->
+        <div class="form-container">
+            <!-- Step Indicator -->
+            <div class="step-indicator">
+                <div class="step active" id="step1">
+                    <div class="step-number">1</div>
+                    <span>Identificação</span>
+                </div>
+                <div class="step" id="step2">
+                    <div class="step-number">2</div>
+                    <span>Interesses</span>
+                </div>
+                <div class="step" id="step3">
+                    <div class="step-number">3</div>
+                    <span>Comentários</span>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="email">E-mail</label>
-                <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com">
-                <span class="error-message" id="emailError"></span>
-            </div>
+            <form id="techForm" novalidate>
+                <!-- Section 1: Personal Info -->
+                <div class="form-section active" id="section1">
+                    <div class="section-title">
+                        <div class="section-icon">👤</div>
+                        <h2>Informações Pessoais</h2>
+                    </div>
 
-            <div class="form-group">
-                <label>Tecnologias de interesse (selecione pelo menos uma)</label>
-                <div class="checkbox-group">
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="ai" name="tech" value="ai">
-                        <label for="ai">Inteligência Artificial</label>
+                    <div class="form-group">
+                        <label for="name" class="required">Nome completo</label>
+                        <div class="input-container">
+                            <input type="text" id="name" name="name" placeholder="Digite seu nome completo" required aria-describedby="nameError">
+                            <div class="validation-icon" id="nameIcon"></div>
+                        </div>
+                        <div class="error-message" id="nameError" role="alert"></div>
                     </div>
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="ar" name="tech" value="ar">
-                        <label for="ar">Realidade Aumentada</label>
-                    </div>
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="blockchain" name="tech" value="blockchain">
-                        <label for="blockchain">Blockchain</label>
-                    </div>
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="iot" name="tech" value="iot">
-                        <label for="iot">Internet das Coisas (IoT)</label>
-                    </div>
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="robotics" name="tech" value="robotics">
-                        <label for="robotics">Robótica</label>
-                    </div>
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="quantum" name="tech" value="quantum">
-                        <label for="quantum">Computação Quântica</label>
+
+                    <div class="form-group">
+                        <label for="email" class="required">E-mail</label>
+                        <div class="input-container">
+                            <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required aria-describedby="emailError">
+                            <div class="validation-icon" id="emailIcon"></div>
+                        </div>
+                        <div class="error-message" id="emailError" role="alert"></div>
                     </div>
                 </div>
-                <span class="error-message" id="techError"></span>
-            </div>
 
-            <div class="form-group">
-                <label for="comments">Comentários ou sugestões</label>
-                <textarea id="comments" name="comments" placeholder="Compartilhe seus pensamentos sobre essas tecnologias..." rows="4"></textarea>
-            </div>
+                <!-- Section 2: Tech Interests -->
+                <div class="form-section" id="section2">
+                    <div class="section-title">
+                        <div class="section-icon">🔬</div>
+                        <h2>Áreas de Interesse</h2>
+                    </div>
 
-            <div class="form-actions">
-                <button type="submit" id="submitBtn">Enviar formulário</button>
-            </div>
-        </form>
+                    <div class="form-group">
+                        <label class="required">Selecione suas tecnologias de interesse (pelo menos uma)</label>
+                        <div class="tech-grid" role="group" aria-labelledby="techLabel">
+                            <div class="tech-card" data-tech="ai">
+                                <input type="checkbox" id="ai" name="tech" value="ai" aria-describedby="ai-desc">
+                                <div class="tech-card-content">
+                                    <div class="tech-icon">🤖</div>
+                                    <div class="tech-info">
+                                        <h3>Inteligência Artificial</h3>
+                                        <p id="ai-desc">Machine Learning, Deep Learning, LLMs</p>
+                                    </div>
+                                </div>
+                            </div>
 
-        <div id="successMessage" class="success-message hidden">
-            <h2>✅ Formulário enviado com sucesso!</h2>
-            <p>Obrigado por participar da nossa pesquisa. Seus dados foram recebidos.</p>
-            <button id="resetBtn">Preencher novo formulário</button>
+                            <div class="tech-card" data-tech="ar">
+                                <input type="checkbox" id="ar" name="tech" value="ar" aria-describedby="ar-desc">
+                                <div class="tech-card-content">
+                                    <div class="tech-icon">🥽</div>
+                                    <div class="tech-info">
+                                        <h3>Realidade Aumentada</h3>
+                                        <p id="ar-desc">AR, VR, Metaverso, Realidade Mista</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tech-card" data-tech="blockchain">
+                                <input type="checkbox" id="blockchain" name="tech" value="blockchain" aria-describedby="blockchain-desc">
+                                <div class="tech-card-content">
+                                    <div class="tech-icon">⛓️</div>
+                                    <div class="tech-info">
+                                        <h3>Blockchain</h3>
+                                        <p id="blockchain-desc">Criptomoedas, DeFi, NFTs, Web3</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tech-card" data-tech="iot">
+                                <input type="checkbox" id="iot" name="tech" value="iot" aria-describedby="iot-desc">
+                                <div class="tech-card-content">
+                                    <div class="tech-icon">🌐</div>
+                                    <div class="tech-info">
+                                        <h3>Internet das Coisas</h3>
+                                        <p id="iot-desc">Dispositivos conectados, Smart Cities</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tech-card" data-tech="robotics">
+                                <input type="checkbox" id="robotics" name="tech" value="robotics" aria-describedby="robotics-desc">
+                                <div class="tech-card-content">
+                                    <div class="tech-icon">🦾</div>
+                                    <div class="tech-info">
+                                        <h3>Robótica</h3>
+                                        <p id="robotics-desc">Automação, Robôs autônomos</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tech-card" data-tech="quantum">
+                                <input type="checkbox" id="quantum" name="tech" value="quantum" aria-describedby="quantum-desc">
+                                <div class="tech-card-content">
+                                    <div class="tech-icon">⚛️</div>
+                                    <div class="tech-info">
+                                        <h3>Computação Quântica</h3>
+                                        <p id="quantum-desc">Qubits, Algoritmos quânticos</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="error-message" id="techError" role="alert"></div>
+                    </div>
+                </div>
+
+                <!-- Section 3: Comments -->
+                <div class="form-section" id="section3">
+                    <div class="section-title">
+                        <div class="section-icon">💭</div>
+                        <h2>Compartilhe sua Visão</h2>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comments">Comentários, sugestões ou expectativas</label>
+                        <textarea id="comments" name="comments" placeholder="Conte-nos sobre suas experiências, expectativas ou como essas tecnologias impactam seu trabalho..." rows="5" maxlength="1000"></textarea>
+                        <div class="character-count" id="commentCount">0/1000 caracteres</div>
+                    </div>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary" id="submitBtn">
+                        <span id="submitText">Enviar Pesquisa</span>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Success Message -->
+            <div id="successMessage" class="success-message hidden">
+                <h2>✅ Obrigado pela sua participação!</h2>
+                <p>Sua pesquisa foi enviada com sucesso. Seus insights são valiosos para entendermos o futuro da tecnologia.</p>
+                <button class="btn btn-secondary" id="resetBtn">Nova Pesquisa</button>
+            </div>
         </div>
     </div>
 
