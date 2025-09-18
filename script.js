@@ -312,7 +312,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="feedback-section">
                         <h3>Ajude-nos a melhorar!</h3>
                         <p>Gostaríamos de saber sua opinião sobre este formulário.</p>
-                        <a href="https://forms.google.com/SEU_LINK_AQUI" target="_blank" class="btn btn-secondary">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeiL48RyRop8T7Cku1pd3PO56vWo0Krt3-aTxkDsVy8jG4iOQ/viewform?usp=header" target="_blank" class="btn btn-secondary">
                             Participar da pesquisa de satisfação
                         </a>
                     </div>
